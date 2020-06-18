@@ -37,7 +37,7 @@ object DynamicColunm {
     val columnsRenamed = df.schema.fieldNames
 
     // rename the columns and create dataframe with new headers
-    val nCol = columnsRenamed.map(x => tileValue(before,x, sufperfix))
+    val nCol = columnsRenamed.map(x => changeColumnName(before,x, sufperfix))
     val secondDF = df.toDF(nCol: _*)
 
     secondDF.show()
@@ -48,7 +48,7 @@ object DynamicColunm {
   }
 
 
-  private def tileValue(m_before: Boolean, origcol: String, m_sufperfix: String) = {
+  private def changeColumnName(m_before: Boolean, origcol: String, m_sufperfix: String) = {
     var colrename = ""
     if (m_before) {
       colrename =  m_sufperfix + origcol
